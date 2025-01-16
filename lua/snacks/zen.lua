@@ -175,6 +175,8 @@ function M.zen(opts)
     group = win.augroup,
     pattern = tostring(win.win),
     callback = vim.schedule_wrap(function()
+      -- Restore cursor position
+      vim.api.nvim_win_set_cursor(parent_win, vim.api.nvim_win_get_cursor(win.win))
       if zoom_indicator then
         zoom_indicator:close()
       end
